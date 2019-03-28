@@ -3,6 +3,7 @@ package br.senai.sc;
 import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,7 +13,7 @@ import br.senai.sc.repositories.TarefaRepository;
 
 
 @SpringBootApplication
-public class ProjetoTarefasApplication {
+public class ProjetoTarefasApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoTarefasApplication.class, args);

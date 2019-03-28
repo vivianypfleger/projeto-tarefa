@@ -19,7 +19,7 @@ public class Tarefa implements Serializable{
 	private Integer id;
 	private String nome;
 	private Date data;
-	private EstadoTarefa estado;
+	private Integer estado;
 	
 	
 	public Tarefa() {
@@ -31,7 +31,7 @@ public class Tarefa implements Serializable{
 		this.id = id;
 		this.nome = nome;
 		this.data = data;
-		this.estado = estado;
+		this.estado = estado.getCodigo();
 	}
 
 
@@ -66,12 +66,12 @@ public class Tarefa implements Serializable{
 
 
 	public EstadoTarefa getEstado() {
-		return estado;
+		return EstadoTarefa.toEnum(estado);
 	}
 
 
 	public void setEstado(EstadoTarefa estado) {
-		this.estado = estado;
+		this.estado = estado.getCodigo();
 	}
 
 
