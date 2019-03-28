@@ -31,13 +31,16 @@ public class ProjetoTarefasApplication implements CommandLineRunner {
 		Tarefa tar3 = new Tarefa(null, "Convite aos Palestrantes", sdf.parse("01/04/2018 23:00"),EstadoTarefa.PENDENTE);
 		Tarefa tar4 = new Tarefa(null, "Abertura das Inscrições", sdf.parse("25/03/2018 08:00"),EstadoTarefa.CONCLUIDA);
 		Tarefa tar5 = new Tarefa(null, "Realização do Evento", sdf.parse("20/04/2018 19:00"),EstadoTarefa.PENDENTE);
+		Tarefa tar6 = new Tarefa(null, "Avaliação do Evento", sdf.parse("30/04/2018 22:00"),EstadoTarefa.PENDENTE);
+		Tarefa tar7 = new Tarefa(null, "Análise Financeira", sdf.parse("10/05/2018 19:00"),EstadoTarefa.PENDENTE);
 		
 		Repotarefa.save(tar1);
 		Repotarefa.save(tar2);
 		Repotarefa.save(tar3);
 		Repotarefa.save(tar4);
 		Repotarefa.save(tar5);
-		
+		Repotarefa.save(tar6);
+		Repotarefa.save(tar7);
 		
 								
 		
