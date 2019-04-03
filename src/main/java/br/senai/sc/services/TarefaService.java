@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.senai.sc.domain.Tarefa;
 import br.senai.sc.repositories.TarefaRepository;
+import br.senai.sc.services.exceptions.ObjetoNaoEncontradoException;
 
 @Service
 public class TarefaService {
@@ -21,14 +22,16 @@ public class TarefaService {
 	
 	public Tarefa buscarPorId(Integer id) {
 		Optional<Tarefa> obj = repo.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjetoNaoEncontradoException("Tarefa não encontrada"));
 	}
 	
 	public void delete(Integer id) {
+		buscarPorId(id);
 		repo.deleteById(id);
 	}
 	
 	public void update(Tarefa obj) {
+		buscarPorId(obj.getId());
 		repo.save(obj);
 	}
 	

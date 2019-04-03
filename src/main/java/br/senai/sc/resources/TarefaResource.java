@@ -1,7 +1,6 @@
 package br.senai.sc.resources;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.senai.sc.domain.Tarefa;
-import br.senai.sc.repositories.TarefaRepository;
 import br.senai.sc.services.TarefaService;
 
 @RestController
