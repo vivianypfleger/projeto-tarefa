@@ -13,29 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.senai.sc.domain.Tarefa;
 import br.senai.sc.repositories.TarefaRepository;
+import br.senai.sc.services.TarefaService;
 
 @RestController
 @RequestMapping(value="/tarefas")
 public class TarefaResource {
 
 	@Autowired
-	private TarefaRepository repo;
+	private TarefaService service;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<Tarefa>> listarTodos() {
-		List<Tarefa> lista = repo.findAll();
+		List<Tarefa> lista = service.listarTodos();
 		return ResponseEntity.ok(lista);
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Tarefa> buscar(@PathVariable Integer id) {
-		Optional<Tarefa> obj = repo.findById(id);
-		return ResponseEntity.ok(obj.orElse(null));
+		Tarefa obj = service.buscarPorId(id);
+		return ResponseEntity.ok(obj);
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> deletar(@PathVariable Integer id) {
-		repo.deleteById(id);
+		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
@@ -43,9 +44,15 @@ public class TarefaResource {
 	public ResponseEntity<Void> update(@RequestBody Tarefa obj, 
 			@PathVariable Integer id) {
 		obj.setId(id);
-		repo.save(obj);
+		service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody Tarefa obj) {
+		obj.setId(null);
+		service.insert(obj);
+		return ResponseEntity.noContent().build();
+	}
 	
 }
